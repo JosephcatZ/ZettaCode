@@ -1,0 +1,8 @@
+1 print Hello
+2 print What is your name?
+3 strIn 0
+4 point 0
+5 ~concat Hello, 
+6 concat~ , I'm World
+7 memPrint
+8 EXIT

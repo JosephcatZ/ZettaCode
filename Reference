@@ -1,0 +1,45 @@
+print a
+prints a to the screen
+
+goto a
+goes to line a
+
+store a
+stores a to the memory at the pointer value
+
+gotoIf0 at
+goes to line a ONLY if the value in the memory at the pointer location is EXACTLY 0
+
+[operators]n
+preforms the operator to n and the value in the memory at the pointer location and stores it to the value in the memory at the pointer location
+
+memPrint
+prints the value in the memory at the pointer location
+
+point a
+changes the pointer value to a
+
+memPoint
+changes the pointer value to the value in the memory at the pointer location
+
+[operator]$b
+preforms the operator to the value in memory at pointer reference b and the value in the memory at the pointer location and stores it to the value in the memory at the pointer location
+
+$[operator]b
+preforms the operator to the value in memory at pointer reference b and the value in the memory at the pointer location and stores it to the value in the memory at the pointer reference b
+
+strIn a
+get a text input and store it intop memory at position a
+
+operators:
+--------------------------
+concat~ a
+~concat a
+returns a direct joining of the memory position's value and a, where a is at the ~ 
+
+%
+*
+/
++
+-
+

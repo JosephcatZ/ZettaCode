@@ -1,0 +1,22 @@
+1 point 0
+2 store 10
+3 gotoIf0 22
+4 point 1
+5 store 10
+6 gotoIf0 19
+7 point 0
+8 point 3
+9 store 0
+10 point 0
+11 $+3
+12 point 3
+13 *10
+14 +$1
+15 memPrint
+16 point 1
+17 -1
+18 goto 6
+19 point 0
+20 -1
+21 goto 3
+22 EXIT
