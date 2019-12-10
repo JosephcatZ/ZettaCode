@@ -30,6 +30,8 @@ while not OUT:
         out.append(CODE[line][6:])
     elif "goto " in CODE[line]:
         line = int(CODE[line][5:])-1
+    elif "$store" in CODE[line]:
+        memory[CODE[line][7:]] = pointer
     elif "store" in CODE[line]:
         memory[pointer] = CODE[line][6:]
     elif "gotoIf0" in CODE[line]:

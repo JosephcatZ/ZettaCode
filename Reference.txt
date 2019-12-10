@@ -31,6 +31,9 @@ preforms the operator to the value in memory at pointer reference b and the valu
 strIn a
 get a text input and store it intop memory at position a
 
+$store a
+stores the current memory position to memory at position a of memory
+
 operators:
 --------------------------
 concat~ a
