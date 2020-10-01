@@ -1,33 +1,40 @@
-j = ' '
+from sys import argv
+
+def parseNumbers(code):
+    CODE = {}
+    for i in code:
+        line = int(i.split(" ")[0])
+        CODE[line] = i[len(str(line))+1:]
+    return code
+
+# test if filename was given
+if len(argv) < 2:
+    print("[ERROR] no filename given")
+    exit(1)
+
+#retrieve file name and setup code/pointer
+filename = argv[1]
 code = []
 pointer = 0
 
-with open("Main.ZC") as main:
-    for i in main:
-        code.append(i.split("\n")[0])
-Numbers = "0123456789"
+# parse the file into the code array
+with open(filename, "r") as main:
+    code = main.readlines() # get lines
+    code = [i.strip() for i in code] # strip of the \n's
+
+# parse the line numbers in the code
 CODE = {}
 for i in code:
-    j = 0
-    line = 0
-    length = 0
-    while i[j] in Numbers:
-        line = line*10 + int(i[j])
-        length += 1
-        j+=1
-    
-    CODE[line] = i[length+1:]
+    line = int(i.split(" ")[0])
+    CODE[line] = i[len(str(line))+1:]
+
+# main program loop
 line = 1
-OUT = False
-out = []
-global memory
 memory = {}
 pointer = 0
-while not OUT:
-    #print(line,CODE[line])
+while True:
     if "print" in CODE[line]:
         print(CODE[line][6:])
-        out.append(CODE[line][6:])
     elif "goto " in CODE[line]:
         line = int(CODE[line][5:])-1
     elif "$store" in CODE[line]:
@@ -68,13 +75,9 @@ while not OUT:
     elif "%" in CODE[line]:
         memory[pointer] = int(memory[pointer]) % int(CODE[line][1:])
     elif "strIn" in CODE[line]:
-        IN = '                                                     '
-        while IN == "                                                     ":
-            IN = input("> ")
-            memory[int(CODE[line][6:])] = IN
+        memory[int(CODE[line][6:])] = input("> ")
     elif "memPrint" in CODE[line]:
         print(memory[pointer])
-        out.append(memory[pointer])
     elif "point" in CODE[line]:
         pointer = int(CODE[line][6:])
     elif "memPoint" in CODE[line]:
@@ -92,9 +95,5 @@ while not OUT:
     elif "~concat$" in CODE[line]:
         memory[pointer] = memory[int(CODE[line][9:])] + str(memory[pointer])
     elif CODE[line] == "EXIT":
-        OUT = True
-    #print(memory,pointer)
-    #print(memory,pointer)
-    #while input() != "":
-    #    print("")
+        break
     line += 1
